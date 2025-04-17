@@ -1,0 +1,43 @@
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+
+const ScrollablePersonList = ({ persons = [] }) => {
+  const navigate = useNavigate();
+
+  const sendPersonId = (personId) => {
+    console.log("Selected PersonId:", personId);
+    navigate(`/profile/${personId}`);
+  };
+
+  return (
+    <div className="ml-60 -mb-10 " >
+      <div className="overflow-x-auto scrollbar-hide flex items-center justify-center mt-10 ">
+        <div className="flex gap-x-4  items-center justify-center">
+          {console.log("Persons:", persons)}
+          {persons.map((person) => (
+            <div
+              key={person?._id}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => sendPersonId(person?._id)}
+            >
+              {person?.profilePicture ? (
+                <img
+                  className="w-12 h-12 rounded-full border-2 border-white "
+                  src={person.profilePicture}
+                  alt={`${person?.username}'s Profile`}
+                />
+              ) : (
+                <FaUserCircle className="w-12 h-12 text-gray-400" />
+              )}
+              <p className="text-sm text-black text-center">{person?.username}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ScrollablePersonList;
+
+
