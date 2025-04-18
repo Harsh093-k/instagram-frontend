@@ -117,8 +117,8 @@ const Post = ({ post }) => {
             <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                     <div>
-                        {user?.profilePicture ? (
-                            <img className='h-10 w-10 items-center rounded-full' src={user.profilePicture} alt="profile_picture" />
+                        {post?.url ? (
+                            <img className='h-10 w-10 items-center rounded-full' src={post.url} alt="profile_picture" />
                         ) : (
                             <FaUserCircle size={35} />
                         )}
