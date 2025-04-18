@@ -19,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const res = await axios.get("http://localhost:8080/api/v1/user/following/data", { withCredentials: true });
+                const res = await axios.get("https://instagram-backend-my27.onrender.com/api/v1/user/following/data", { withCredentials: true });
 
                 if (res.data.success) { 
 

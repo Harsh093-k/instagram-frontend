@@ -14,7 +14,7 @@ const SuggestedUsers = () => {
     const follow = async (userId) => {
         try {
             const response = await axios.post(
-                `http://localhost:8080/api/v1/user/followorunfollow/${userId}`,
+                `https://instagram-backend-my27.onrender.com/api/v1/user/followorunfollow/${userId}`,
                 {},
                 {
                     headers: {
@@ -32,7 +32,7 @@ const SuggestedUsers = () => {
                 
                 setTimeout(async () => {
                     try {
-                        const res = await axios.get('http://localhost:8080/api/v1/user/suggested', { withCredentials: true });
+                        const res = await axios.get('https://instagram-backend-my27.onrender.com/api/v1/user/suggested', { withCredentials: true });
                         console.log(res.data);
                         if (res.data.success) { 
                             dispatch(setSuggestedUsers(res.data.users));

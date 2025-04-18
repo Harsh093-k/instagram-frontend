@@ -42,7 +42,7 @@ const EditProfile = () => {
         }
         try {
             setLoading(true);
-            const res = await axios.put('http://localhost:8080/api/v1/user/profile/edit', formData, {
+            const res = await axios.put('https://instagram-backend-my27.onrender.com/api/v1/user/profile/edit', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

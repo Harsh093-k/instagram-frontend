@@ -34,7 +34,7 @@ const CommentDialog = ({ open, setOpen }) => {
   const commentdelete = async (commentId) => {
     const postId = selectedPost._id;
     try {
-      const res = await axios.delete("http://localhost:8080/api/v1/post/comment/delete", {
+      const res = await axios.delete("https://instagram-backend-my27.onrender.com/api/v1/post/comment/delete", {
         data: { postId, commentId },
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const CommentDialog = ({ open, setOpen }) => {
   const sendMessageHandler = async () => {
   
     try {
-      const res = await axios.post(`http://localhost:8080/api/v1/post/${selectedPost?._id}/comment`, {
+      const res = await axios.post(`https://instagram-backend-my27.onrender.com/api/v1/post/${selectedPost?._id}/comment`, {
         text
       }, {
         headers: {

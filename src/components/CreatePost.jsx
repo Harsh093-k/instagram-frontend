@@ -51,7 +51,7 @@ const CreatePost = ({ open, setOpen }) => {
       setLoading(true);
       
       const res = await axios.post(
-        `http://localhost:8080/api/v1/post/addpost?type=${fileType}`,
+        `https://instagram-backend-my27.onrender.com/api/v1/post/addpost?type=${fileType}`,
         uploadData,
         {
           headers: { 'Content-Type': 'multipart/form-data' },
