@@ -28,12 +28,17 @@ const Login = () => {
         console.log(input);
         try {
             setLoading(true);
-            const res = await axios.post("https://instagram-backend-my27.onrender.com/api/v1/user/login", input, {
-                headers: {
+            const res = await axios.post(
+                "https://instagram-backend-my27.onrender.com/api/v1/user/login",
+                input,
+                {
+                  headers: {
                     'Content-Type': 'application/json'
-                },
-                
-            });
+                  },
+                  withCredentials: true 
+                }
+              );
+              
 
             if (res.data.success) {
                 console.log("login data:-",res.data);
