@@ -46,7 +46,7 @@ const Login = () => {
             }
         } catch (error) {
             console.log(error);
-            Toaster.error(error.response.data.message);
+            Toaster.error(error.response.data.message || "Invalid Email and password!");
         } finally {
             setLoading(false);
         }
