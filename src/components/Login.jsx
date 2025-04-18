@@ -32,9 +32,7 @@ const Login = () => {
                 "https://instagram-backend-my27.onrender.com/api/v1/user/login",
                 input,
                 {
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
+                 
                   withCredentials: true 
                 }
               );
