@@ -42,7 +42,7 @@ const CreatePost = ({ open, setOpen }) => {
     }
   
    
-    const fileType = formData.file.type.startsWith('video') ? 'video' : 'image';
+    const fileType = formData.file.type.startsWith('video') ? 'reel' : 'image';
     const uploadData = new FormData();
     uploadData.append('caption', formData.caption);
     uploadData.append('file', formData.file);
