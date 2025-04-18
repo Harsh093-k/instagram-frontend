@@ -36,6 +36,7 @@ const Login = () => {
             });
 
             if (res.data.success) {
+                console.log("login data:-",res.data);
                 dispatch(setAuthUser(res.data.user));
                 navigate("/");
                 Toaster.success(res.data.message);
