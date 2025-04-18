@@ -1,3 +1,5 @@
+
+
 import { setPosts } from "@/redux/postSlice";
 import axios from "axios";
 import { useEffect } from "react";
@@ -11,11 +13,11 @@ const useGetAllPost = () => {
             try {
                 const res = await axios.get('https://instagram-backend-my27.onrender.com/api/v1/post/all', { withCredentials: true });
                 if (res.data.success) { 
-                    console.log("posts:-".res.data.posts);
+                    console.log(res.data.posts);
                     dispatch(setPosts(res.data.posts));
                 }
             } catch (error) {
-                console.log("posts error:-",error);
+                console.log(error);
             }
         }
         fetchAllPost();
