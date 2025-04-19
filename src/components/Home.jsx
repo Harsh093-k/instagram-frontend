@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div className='flex flex-col lg:flex-row w-full min-h-screen bg-gray-50'>
    
-      <div className='flex flex-col items-center w-full lg:ml-96 overflow-hidden'>
+      <div className='flex flex-col items-center w-full lg:ml-60 overflow-hidden'>
         <div className='w-full overflow-x-auto  sm:w-screen  overflow-hidden'>
           <ScrollablePersonList persons={followingUser ?? []} />
         </div>
