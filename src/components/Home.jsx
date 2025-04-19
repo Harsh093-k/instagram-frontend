@@ -41,8 +41,8 @@ const Home = () => {
   return (
     <div className='flex flex-col lg:flex-row w-full min-h-screen bg-gray-50'>
    
-      <div className='flex flex-col items-center w-full lg:flex-1'>
-        <div className='w-full overflow-x-auto px-10 sm:px-7 '>
+      <div className='flex flex-col items-center w-full lg:flex-1 overflow-hidden'>
+        <div className='w-full overflow-x-auto px-10 sm:px-7 overflow-hidden'>
           <ScrollablePersonList persons={followingUser ?? []} />
         </div>
         <Feed />
