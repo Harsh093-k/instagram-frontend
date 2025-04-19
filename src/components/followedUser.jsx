@@ -11,7 +11,7 @@ const ScrollablePersonList = ({ persons = [] }) => {
 
   return (
     <div className="w-full overflow-x-auto  mt-6">
-      <div className="flex gap-x-4 w-40">
+      <div className="flex gap-x-4 w-60">
         {persons.map((person) => (
           <div
             key={person?._id}
