@@ -17,6 +17,8 @@ import { setPosts, setSelectedPost } from '@/redux/postSlice';
 const MainLayout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showSuggested, setShowSuggested] = useState(false);
   const [open, setOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
 
@@ -28,20 +30,20 @@ const MainLayout = () => {
         'https://instagram-backend-my27.onrender.com/api/v1/user/logout',
         { withCredentials: true }
       );
-  
+
       if (res.data.success) {
         dispatch(setAuthUser(null));
-        dispatch(setSelectedPost(null)); // ✅ Correct usage
+        dispatch(setSelectedPost(null));
         dispatch(setPosts([]));
         navigate("/login");
-        
+
         toast.success(res.data.message);
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
-  
+
 
 
 
@@ -84,16 +86,52 @@ const MainLayout = () => {
             <User className="h-5 w-5" />
             <span>Profile</span>
           </button>
-          <button onClick={logoutHandler} className="flex flex-col items-center text-sm">
-            <LogOut className="h-5 w-5" />
-            <span>Logout</span>
+          <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col items-center text-sm relative">
+            <div className="text-xl font-bold">⋮</div>
+            <span>Menu</span>
+
+            {menuOpen && (
+              <div className="absolute bottom-10 bg-white border rounded shadow-md w-32 right-0 z-50">
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setShowSuggested(true);
+                  }}
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Suggested
+                </button>
+                <button
+                  onClick={logoutHandler}
+                  className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </button>
+
 
 
         </div>
 
 
         <CreatePost open={open} setOpen={setOpen} />
+        {showSuggested && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded shadow-lg w-96 max-h-[80vh] overflow-auto relative">
+              <button
+                onClick={() => setShowSuggested(false)}
+                className="absolute top-2 right-2 text-gray-600 hover:text-black text-xl"
+              >
+                &times;
+              </button>
+              <h2 className="text-lg font-semibold mb-4">Suggested Users</h2>
+              <SuggestedUsers />
+            </div>
+          </div>
+        )}
+
       </div>
     );
   }
