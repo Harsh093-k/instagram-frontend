@@ -39,22 +39,51 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className='flex flex-col lg:flex-row w-full min-h-screen bg-gray-50'>
+    // <div className='flex flex-col lg:flex-row w-full min-h-screen bg-gray-50'>
    
-      <div className='flex flex-col items-center m-auto justify-center w-full lg:flex-1 overflow-hidden'>
-        <div className='w-full overflow-x-auto  sm:w-screen  overflow-hidden'>
-          <ScrollablePersonList persons={followingUser ?? []} />
-        </div>
-        <Feed />
-        <Outlet />
-      </div>
+    //   <div className='flex flex-col items-center m-auto justify-center w-full lg:flex-1 overflow-hidden'>
+    //     <div className='w-full overflow-x-auto  sm:w-screen  overflow-hidden'>
+    //       <ScrollablePersonList persons={followingUser ?? []} />
+    //     </div>
+    //     <Feed />
+    //     <Outlet />
+    //   </div>
 
       
-      <div className='hidden lg:block lg:w-[300px] border-l border-gray-200'>
-        <RightSidebar />
-      </div>
-    </div>
-  );
+    //   <div className='hidden lg:block lg:w-[300px] border-l border-gray-200'>
+    //     <RightSidebar />
+    //   </div>
+    // </div>
+    
+      
+        <div className='flex flex-col lg:flex-row w-full min-h-screen bg-gray-50'>
+    
+          {/* Main Content Area */}
+          <div className='flex flex-col items-center w-full lg:flex-1 px-4 py-6 gap-4 overflow-hidden'>
+    
+            {/* Scrollable Person List */}
+            <div className='w-full overflow-x-auto'>
+              <ScrollablePersonList persons={followingUser ?? []} />
+            </div>
+    
+            {/* Feed (centered) */}
+            <div className='w-full max-w-2xl'>
+              <Feed />
+            </div>
+    
+            {/* Outlet (centered) */}
+            <div className='w-full max-w-2xl'>
+              <Outlet />
+            </div>
+          </div>
+    
+          {/* Right Sidebar */}
+          <div className='hidden lg:block lg:w-[300px] border-l border-gray-200'>
+            <RightSidebar />
+          </div>
+        </div>
+      );
+   
 };
 
 export default Home;
