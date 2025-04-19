@@ -8,7 +8,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import CommentDialog from './CommentDialog'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import toaster from 'react-hot-toast'
+import toaster, { toast } from 'react-hot-toast'
 import { setPosts, setSelectedPost } from '@/redux/postSlice'
 import { Badge } from './ui/badge'
 
@@ -31,7 +31,33 @@ const Post = ({ post }) => {
             setText("");
         }
     }
-
+    const follow = async (userId) => {
+        try {
+            const response = await axios.post(
+                `https://instagram-backend-my27.onrender.com/api/v1/user/followorunfollow/${userId}`,
+                {},
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    withCredentials: true,
+                }
+            );
+    
+      
+            if (response.data.message === "Unfollowed successfully") {
+                toast.success("Unfollowed successfully");
+            } else if (response.data.message === "Followed successfully") {
+                toast.success("Followed successfully");
+            } else {
+                toast(response.data.message); 
+            }
+    
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Something went wrong!");
+        }
+    };
+    
     const likeOrDislikeHandler = async () => {
         try {
             const action = liked ? 'dislike' : 'like';
@@ -135,7 +161,7 @@ const Post = ({ post }) => {
                     </DialogTrigger>
                     <DialogContent className="flex flex-col items-center text-sm text-center">
                         {
-                            post?.author?._id !== user?._id && <Button variant='ghost' className="cursor-pointer w-fit text-[#ED4956] font-bold">Unfollow</Button>
+                            post?.author?._id !== user?._id && <Button variant='ghost' onClick={() => follow(user._id)}  className="cursor-pointer w-fit text-[#ED4956] font-bold" >Unfollow</Button>
                         }
 
                         <Button variant='ghost' className="cursor-pointer w-fit">Add to favorites</Button>

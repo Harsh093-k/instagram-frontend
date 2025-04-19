@@ -10,26 +10,27 @@ const ScrollablePersonList = ({ persons = [] }) => {
   };
 
   return (
-    <div className="ml-60 -mb-10 " >
-      <div className="overflow-x-auto scrollbar-hide flex items-center justify-center mt-10 ">
-        <div className="flex gap-x-4  items-center justify-center">
-          {console.log("Persons:", persons)}
+    <div className="md:ml-60  ">
+      <div className="overflow-x-auto scrollbar-thin flex items-center justify-center mt-6">
+        <div className="flex gap-x-4 items-center">
           {persons.map((person) => (
             <div
               key={person?._id}
-              className="flex flex-col items-center cursor-pointer"
+              className="flex flex-col items-center cursor-pointer min-w-[60px]"
               onClick={() => sendPersonId(person?._id)}
             >
               {person?.profilePicture ? (
                 <img
-                  className="w-12 h-12 rounded-full border-2 border-white "
+                  className="w-12 h-12 rounded-full border-2 border-white"
                   src={person.profilePicture}
                   alt={`${person?.username}'s Profile`}
                 />
               ) : (
                 <FaUserCircle className="w-12 h-12 text-gray-400" />
               )}
-              <p className="text-sm text-black text-center">{person?.username}</p>
+              <p className="text-xs text-black text-center truncate w-14">
+                {person?.username}
+              </p>
             </div>
           ))}
         </div>
@@ -39,5 +40,3 @@ const ScrollablePersonList = ({ persons = [] }) => {
 };
 
 export default ScrollablePersonList;
-
-
