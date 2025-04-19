@@ -6,7 +6,7 @@ const Posts = () => {
   const {posts} = useSelector(store=>store.post);
   console.log(posts);
   return (
-    <div>
+    <div className='overflow'>
         {
             posts.map((post) => <Post key={post._id} post={post}/>)
         }
