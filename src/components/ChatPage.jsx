@@ -209,7 +209,7 @@ const ChatPage = () => {
                 </div>
 
                 {/* Message Input */}
-                <div className='flex items-center p-4 border-t border-gray-300 bg-black mb-28 md:static fixed bottom-0 left-0 right-0 z-50'>
+                <div className='flex items-center p-4 border-t border-gray-300 bg-black mb-10 md:static fixed bottom-0 left-0 right-0 z-50'>
                     <Input
                         value={textMessage}
                         onChange={(e) => setTextMessage(e.target.value)}
